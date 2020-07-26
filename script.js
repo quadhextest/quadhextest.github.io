@@ -1,32 +1,55 @@
 window.onload = function () {
     var ctx = document.getElementById('graph').getContext('2d');
 
-    var chart = new Chart(ctx, {
+    var myChart = new Chart(ctx, {
         type: 'scatter',
-
         data: {
-            labels: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6],
             datasets: [{
-                label: 'Your Score',
-                backgroundColor: 'rgba(200, 100, 0, 0)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6],
+                label: 'Scatter Dataset',
+                pointBackgroundColor: '#FF0000',
+                pointBorderColor: '#FF0000',
+                pointBorderWidth: 20,
+                backgroundColor: 'rgb(255, 99, 132)',
+                data: [{
+                    x: 13,
+                    y: 39
+                }]
             }]
         },
 
         options: {
+            legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem) {
+                        return tooltipItem.yLabel;
+                    }
+                }
+            },
             scales: {
                 yAxes: [{
-                    gridLines: {
-                        display: false,
-                        drawBorder: false,
+                    ticks: {
+                        // display: false,
+                        min: -50,
+                        max: 50,
                     },
+                    // gridLines: {
+                    //     display: false,
+                    //     drawBorder: false,
+                    // },
                 }],
                 xAxes: [{
-                    gridLines: {
-                        drawBorder: false,
-                        display: false,
+                    ticks: {
+                        // display: false,
+                        min: -50,
+                        max: 50,
                     },
+                    // gridLines: {
+                    //     drawBorder: false,
+                    //     display: false,
+                    // },
                 }],
             },
         },
