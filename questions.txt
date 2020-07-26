@@ -1,25 +1,27 @@
 Me, Myself, and I
     Religious/Irreverent
-"Marriage is solely defined as the conjoinment of a man and woman."
+"Marriage is solely defined as the conjoinment of a man and woman"
     Tradition/Progress
-
+"Tradition should be mostly preserved"
     Respect/Rebellion
+"Rebellion is always traitorous, regardless of what it's against"
 
 Us
     Control/Freedom
 "Everyone should own a gun."
 "Everyone above the age of 18 should be required to take a firearms safety course"
     Authority/Democracy
-
+"The government should have more power than the people"
     Federation/Unitary
 
 Them
     War/Peace
 "Terrorism is a real threat to America"
+"War is a necessary thing"
     Seclusion/Immigration
-
+"Borders should be open to immigration"
     Isolation/Globalism
-"The U.S. should protect her interests at all costs."
+"The U.S. should protect her interests at all costs"
 
 Others
     Equality/Equity
@@ -27,4 +29,3 @@ Others
     Hardship/Compassion
 
     Charity/Compulsion
-
