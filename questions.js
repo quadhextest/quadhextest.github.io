@@ -16,3 +16,4 @@ questions = [
             "Isolation" : 12,
         }
     },
+];
