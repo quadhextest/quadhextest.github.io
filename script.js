@@ -1,7 +1,9 @@
 window.onload = function () {
     var ctx = document.getElementById('graph').getContext('2d');
 
-    var myChart = new Chart(ctx, {
+    var boundaries = [[-16.5, 41], [16.5, 41], [31, -1.5], [16.5, -44], [16.5, -44], [-32.2, -1.5]];
+
+    var hexagon = new Chart(ctx, {
         type: 'scatter',
         data: {
             datasets: [{
@@ -11,8 +13,8 @@ window.onload = function () {
                 pointBorderWidth: 20,
                 backgroundColor: 'rgb(255, 99, 132)',
                 data: [{
-                    x: 13,
-                    y: 39
+                    x: 16.5,
+                    y: -44
                 }]
             }]
         },
