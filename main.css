@@ -1,0 +1,17 @@
+html {
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+}
+
+canvas {
+    justify-self: center;
+    width: 100% !important;
+    height: 100% !important;
+    background-image: url("hexagon.png");
+    background-size: 63% 100%;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}

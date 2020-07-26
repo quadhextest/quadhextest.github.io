@@ -1,4 +1,4 @@
-questions = [
+var questions = [
     {
         "question": "Bitches ain't shit",
         "score_effect": {
