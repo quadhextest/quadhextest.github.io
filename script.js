@@ -1,4 +1,8 @@
 window.onload = function () {
+    Hexagon();
+}
+
+function Hexagon() {
     // var line = parseInt(prompt("Please choose an axis: 1, 2, or 3 (Default is 1)"));
 
     // if (!line || ![1,2,3].includes(line)) {
@@ -15,12 +19,14 @@ window.onload = function () {
     var totalScore = 0;
 
     for (var i = 0; i < 100; i++) {
-        var newScore = 10 * (Math.random() - Math.random());
+        var seed = Math.random() - Math.random();
+        console.log(seed);
+        var newScore = 500 * seed;
         scores.push(newScore);
         totalScore += newScore;
     }
 
-    var score = totalScore/100;
+    var score = totalScore / 100;
     
     var line = Math.ceil(Math.random() * 3);
 
