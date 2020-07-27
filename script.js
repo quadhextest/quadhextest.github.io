@@ -18,15 +18,14 @@ function Hexagon() {
     var scores = [];
     var totalScore = 0;
 
-    for (var i = 0; i < 100; i++) {
-        var seed = Math.random() - Math.random();
-        console.log(seed);
-        var newScore = 500 * seed;
+    for (var i = 0; i < 33; i++) {
+        var newScore = 50 * (Math.random() - Math.random());
+        console.log(newScore/50);
         scores.push(newScore);
         totalScore += newScore;
     }
 
-    var score = totalScore / 100;
+    var score = totalScore / 33;
     
     var line = Math.ceil(Math.random() * 3);
 
