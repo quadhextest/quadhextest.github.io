@@ -336,7 +336,7 @@ var questions = [
             "Charity"   : 0,
             "War"       : 0,
             "Seclusion" : 0,
-            "Isolation" : 0,
+            "Seclusion" : 0,
         }
     },
     {
