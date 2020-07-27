@@ -11,8 +11,8 @@ window.onload = function () {
     //     score = 0;
     // }
 
-    window.scores = [];
-    window.totalScore = 0;
+    var scores = [];
+    var totalScore = 0;
 
     for (var i = 0; i < 100; i++) {
         var newScore = 10 * (Math.random() - Math.random());
@@ -20,17 +20,12 @@ window.onload = function () {
         totalScore += newScore;
     }
 
-    window.score = totalScore/100;
+    var score = totalScore/100;
     
-    window.line = Math.ceil(Math.random() * 3);
-
-    console.log("Scores:", scores);
-    console.log("Total Score:", totalScore);
-    console.log("Axis:", line, "Score:", score);
+    var line = Math.ceil(Math.random() * 3);
 
     document.getElementById("results").innerHTML = `Axis: ${line}<br>Total Score: ${totalScore}<br>Final Score: ${score}`;
-
-    window.showing = false;
+    document.getElementById("scores").innerHTML = `Scores:<br>${scores.toString().replace(/,/g, "<br>")}`;
 
     var ctx = document.getElementById('graph').getContext('2d');
 
@@ -56,7 +51,7 @@ window.onload = function () {
                 break;
         }
 
-        console.log(w, x, y);
+        document.getElementById("results").innerHTML += `<br>Graph X-value: ${x}<br>Graph Y-value: ${y}`;
 
         return [{
             x: x,
@@ -64,7 +59,7 @@ window.onload = function () {
         }];
     }
 
-    window.hexagon = new Chart(ctx, {
+    var hexagon = new Chart(ctx, {
         type: 'scatter',
         data: {
             datasets: [{
@@ -115,13 +110,3 @@ window.onload = function () {
         },
     });
 };
-
-function expandScores() {
-    if (!showing) {
-        document.getElementById("scores").innerHTML = `Scores:<br>${scores.toString().replace(/,/g, "<br>")}`;
-        showing = true;
-    } else {
-        document.getElementById("scores").innerHTML = '';
-        showing = false;
-    }
-}

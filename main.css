@@ -1,10 +1,14 @@
 html {
     overflow: hidden;
-    color: sky
 }
 
 body {
     display: flex;
+}
+
+#scores {
+    height: 800px;
+    overflow: auto;
 }
 
 canvas {
