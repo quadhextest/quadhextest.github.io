@@ -24,18 +24,20 @@ function Score() {
         var questionString = questions[i].question;
         var scoreEffectMap = questions[i].score_effect;
 
-        console.log(questionString);
+        console.log("Question:", questionString);
 
         var scoreEffectArray = [];
         for (key in scoreEffectMap) {
             scoreEffectArray.push(scoreEffectMap[key]);
         }
-        console.log(scoreEffectArray);
+        console.log("Score Effect:", scoreEffectArray);
 
         for (let j = 0; j < 12; j++) {
             score[j] += scoreEffectArray[j];
         }
-        console.log(score);
+        console.log("New Score Array:", score);
+
+        console.log("---------");
     }
 }
 
