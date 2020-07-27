@@ -3,18 +3,6 @@ window.onload = function () {
 }
 
 function Hexagon() {
-    // var line = parseInt(prompt("Please choose an axis: 1, 2, or 3 (Default is 1)"));
-
-    // if (!line || ![1,2,3].includes(line)) {
-    //     line = 1;
-    // }
-
-    // var score = parseInt(prompt("Please enter a score between -50 and 50 (Default is 0)"));
-
-    // if (!score || score > 50 || score < -50) {
-    //     score = 0;
-    // }
-
     var scores = [];
     var totalScore = 0;
 
@@ -34,25 +22,26 @@ function Hexagon() {
 
     var ctx = document.getElementById('graph').getContext('2d');
 
-    var boundaries = [
-        [-0.5, 47], [-0.5, -49],
-        [23, 22.5], [-24, -25],
-        [23, -25],  [-24, 22]
-    ];
+    var a = [-24, 22];
+    var b = [-0.5, 47];
+    var c = [23, 22.5];
+    var ax = [23, -25];
+    var bx = [-0.5, -49];
+    var cx = [-24, -25];
 
     function scaleData(axis, w) {
         switch (axis) {
             case 1:
+                var x = -47 * ((w + 50) / 100) + 23;
+                var y = 47 * ((w + 50) / 100) - 25;
+                break;
+            case 2:
                 var x = -0.5;
                 var y = 96 * ((w + 50) / 100) - 49;
                 break;
-            case 2:
-                var x = 47 * ((w + 50) / 100) - 24;
-                var y = 47.5 * ((w + 50) / 100) - 25;
-                break;
             case 3:
                 var x = 47 * ((w + 50) / 100) - 24;
-                var y = -47 * ((w + 50) / 100) + 22;
+                var y = 47.5 * ((w + 50) / 100) - 25;
                 break;
         }
 
