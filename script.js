@@ -1,15 +1,32 @@
 window.onload = function () {
-    var line = parseInt(prompt("Please choose an axis: 1, 2, or 3 (Default is 1)"));
+    // var line = parseInt(prompt("Please choose an axis: 1, 2, or 3 (Default is 1)"));
 
-    if (!line || ![1,2,3].includes(line)) {
-        line = 1;
+    // if (!line || ![1,2,3].includes(line)) {
+    //     line = 1;
+    // }
+
+    // var score = parseInt(prompt("Please enter a score between -50 and 50 (Default is 0)"));
+
+    // if (!score || score > 50 || score < -50) {
+    //     score = 0;
+    // }
+
+    var scores = [];
+    var totalScore = 0;
+
+    for (var i = 0; i < 100; i++) {
+        var newScore = 10 * (Math.random() - Math.random());
+        scores.push(newScore);
+        totalScore += newScore;
     }
 
-    var score = parseInt(prompt("Please enter a score between -50 and 50 (Default is 0)"));
+    var score = totalScore/100;
+    
+    var line = Math.ceil(Math.random() * 3);
 
-    if (!score || score > 50 || score < -50) {
-        score = 0;
-    }
+    console.log("Scores:", scores);
+    console.log("Total Score:", totalScore);
+    console.log("Axis:", line, "Score:", score);
 
     var ctx = document.getElementById('graph').getContext('2d');
 
@@ -70,25 +87,25 @@ window.onload = function () {
             scales: {
                 yAxes: [{
                     ticks: {
-                        // display: false,
+                        display: false,
                         min: -50,
                         max: 50,
                     },
-                    // gridLines: {
-                    //     display: false,
-                    //     drawBorder: false,
-                    // },
+                    gridLines: {
+                        display: false,
+                        drawBorder: false,
+                    },
                 }],
                 xAxes: [{
                     ticks: {
-                        // display: false,
+                        display: false,
                         min: -50,
                         max: 50,
                     },
-                    // gridLines: {
-                    //     drawBorder: false,
-                    //     display: false,
-                    // },
+                    gridLines: {
+                        drawBorder: false,
+                        display: false,
+                    },
                 }],
             },
         },
