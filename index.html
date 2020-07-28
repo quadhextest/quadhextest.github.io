@@ -6,6 +6,8 @@
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
+        <script src="https://github.com/mikolalysenko/circumcenter/blob/master/circumcenter.js"></script>
+
         <script src="script.js"></script>
         <script src="questions.js"></script>
 
@@ -13,14 +15,16 @@
     </head>
 
     <body>
-        <div id="interface" style="position: absolute; z-index: 1; overflow-y: auto;">
-            <button onclick="Hexagon()" style="margin-top: 1%;">Regraph Hexagon</button>
+        <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: row;">
+                <canvas id="graph0"></canvas>
+                <canvas id="graph1"></canvas>
+            </div>
 
-            <p id="results"></p>
-
-            <p id="scores"></p>
+            <div style="display: flex; flex-direction: row;">
+                <canvas id="graph2"></canvas>
+                <canvas id="graph3"></canvas>
+            </div>
         </div>
-
-        <canvas id="graph"></canvas>
     </body>
 </html>

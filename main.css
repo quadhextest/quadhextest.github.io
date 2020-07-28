@@ -2,10 +2,6 @@
     font-family: 'Rambla', sans-serif;
 }
 
-html {
-    overflow: hidden;
-}
-
 body {
     display: flex;
 }
@@ -17,7 +13,7 @@ body {
 
 canvas {
     justify-self: center;
-    width: 100% !important;
+    width: 50% !important;
     height: 100% !important;
     background-image: url("hexagon.png");
     background-size: 50% 100%;
