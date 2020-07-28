@@ -24,17 +24,23 @@ function Score() {
         var questionString = questions[i].question;
         var scoreEffectMap = questions[i].score_effect;
 
-        console.log("Question:", questionString);
 
         var scoreEffectArray = [];
+
         for (key in scoreEffectMap) {
             scoreEffectArray.push(scoreEffectMap[key]);
         }
-        console.log("Score Effect:", scoreEffectArray);
+
+        var seed = Math.floor(5 * Math.random());
+        var weight = [-1, -0.5, 0, 0.5, 1][seed];
 
         for (let j = 0; j < 12; j++) {
-            score[j] += scoreEffectArray[j];
+            score[j] += weight * scoreEffectArray[j];
         }
+
+        console.log("Question:", questionString);
+        console.log("Score Effect:", scoreEffectArray);
+        console.log("Weight:", weight);
         console.log("New Score Array:", score);
 
         console.log("---------");
