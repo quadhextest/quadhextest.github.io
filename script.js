@@ -1,13 +1,9 @@
 window.onload = function () {
     Score();
-    Hexagon("graph0");
-    Hexagon("graph1");
-    Hexagon("graph2");
-    Hexagon("graph3");
 }
 
 function Score() {
-    var score = [0,0,0,0,0,0,0,0,0,0,0,0];
+    var scores = [0,0,0,0,0,0,0,0,0,0,0,0];
 
     for (let i = 0; i <= 20; i++) {
         var questionString = questions[i].question;
@@ -20,34 +16,54 @@ function Score() {
         }
 
         var seed = Math.floor(5 * Math.random());
-        var weight = [-1, -0.5, 0, 0.5, 1][seed]; // later replace this with a weight array in function params that is based off of user answers
+        var weight = [-1, -0.5, 0, 0.5, 1][seed];
 
         for (let j = 0; j < 12; j++) {
-            score[j] += weight * scoreEffectArray[j]; // weight[j] (array of weights based off of user answers)
+            scores[j] += weight * scoreEffectArray[j];
         }
+    }
 
-        // console.log("Question:", questionString);
-        // console.log("Score Effect:", scoreEffectArray);
-        // console.log("Weight:", weight);
-        // console.log("New Score Array:", score);
-        // console.log("---------");
+    var max = [0, 300, 150, 150, -50, 0, 0, 0, 0, 0, 0, 0];
+
+    for (let i = 0; i < 12; i++) {
+        if (max[i] == 0) {
+            scores[i] = 0;
+        } else {
+            scores[i] = scores[i] / max[i];
+        }
+    }
+
+    if (!scores.includes(NaN)) {
+        Hexagon("graph0", scores[0], scores[1], scores[2]);
+        Hexagon("graph1", scores[3], scores[4], scores[5]);
+        Hexagon("graph2", scores[6], scores[7], scores[8]);
+        Hexagon("graph3", scores[9], scores[10], scores[11]);
+    } else {
+        Hexagon("graph0");
+        Hexagon("graph1");
+        Hexagon("graph2");
+        Hexagon("graph3");
+
+        console.log("Error occurred");
     }
 }
 
-function Hexagon(id) {
-    var s1 = generateScores();
-    var s2 = generateScores();
-    var s3 = generateScores();
+function Hexagon(id, s1, s2, s3) {
+    if (!s1 || !s2 || !s3) {
+        var s1 = generateScores();
+        var s2 = generateScores();
+        var s3 = generateScores();
+    }
 
     var result = combineScores(s1, s2, s3);
     console.log(id, result[0]);
 
-    var a = [-24, 22];
-    var b = [-0.5, 47];
-    var c = [23, 22.5];
-    var ax = [23, -25];
-    var bx = [-0.5, -49];
-    var cx = [-24, -25];
+    var a = [{ x: -24, y: 22}];
+    var b = [{ x: -0.5, y: 47}];
+    var c = [{ x: 23, y: 22.5}];
+    var ax = [{ x: 23, y: -25}];
+    var bx = [{ x: -0.5, y: -49}];
+    var cx = [{ x: -24, y: -25}];
 
     var ctx = document.getElementById(id).getContext('2d');
 
