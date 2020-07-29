@@ -1,29 +1,17 @@
 window.onload = function () {
-    Score();
+    // Score();
 }
 
 function Score() {
     var scores = [0,0,0,0,0,0,0,0,0,0,0,0];
 
     for (let i = 0; i <= 20; i++) {
-        var questionString = questions[i].question;
-        var scoreEffectMap = questions[i].score_effect;
-
-        var scoreEffectArray = [];
-
-        for (key in scoreEffectMap) {
-            scoreEffectArray.push(scoreEffectMap[key]);
-        }
-
-        var seed = Math.floor(5 * Math.random());
-        var weight = [-1, -0.5, 0, 0.5, 1][seed];
-
         for (let j = 0; j < 12; j++) {
             scores[j] += weight * scoreEffectArray[j];
         }
     }
 
-    var max = [0, 300, 150, 150, -50, 0, 0, 0, 0, 0, 0, 0];
+    const max = [0, 300, 150, 150, -50, 0, 0, 0, 0, 0, 0, 0];
 
     for (let i = 0; i < 12; i++) {
         if (max[i] == 0) {

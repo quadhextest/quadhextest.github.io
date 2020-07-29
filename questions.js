@@ -17,7 +17,7 @@ var questions = [
         }
     },
     {
-        "question": "There should be seperation between Church and State.",
+        "question": "There should be separation between Church and State.",
         "score_effect": {
             "Religious" : -50,
             "Tradition" : -50,

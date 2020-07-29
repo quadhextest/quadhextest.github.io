@@ -18,6 +18,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
         <script src="script.js"></script>
+        <script src="quiz.js"></script>
         <script src="questions.js"></script>
 
         <link rel="stylesheet" href="main.css">
@@ -30,22 +31,22 @@
                 <h1 id="questionText" style="text-align: center; margin-top: 10%; color: white">Marriage is solely defined as the conjoinment of a man and woman.</h1>
                 <div class="input-group mb-3" style="margin-top: 12%;">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" style="background-color: rgb(255, 79, 79); color: white; font-size: 4em;"><a>Strongly Disagree</a></span>
-                        <span class="input-group-text" style="background-color: rgb(255, 116, 116); color: white; font-size: 4em;"><a>Disagree</a></span>
-                        <span class="input-group-text" style="background-color: rgb(75, 75, 75); color: white; font-size: 4em;"><a>Neutral</a></span>
-                        <span class="input-group-text" style="background-color: rgb(45, 211, 56); color: white; font-size: 4em;"><a>Agree</a></span>
+                        <span class="input-group-text" style="background-color: rgb(255, 79, 79); color: white; font-size: 4em;" onclick="answer(-1)"><a>Strongly Disagree</a></span>
+                        <span class="input-group-text" style="background-color: rgb(255, 116, 116); color: white; font-size: 4em;" onclick="answer(-0.5)"><a>Disagree</a></span>
+                        <span class="input-group-text" style="background-color: rgb(75, 75, 75); color: white; font-size: 4em;" onclick="answer(0)"><a>Neutral</a></span>
+                        <span class="input-group-text" style="background-color: rgb(45, 211, 56); color: white; font-size: 4em;" onclick="answer(0.5)"><a>Agree</a></span>
                     </div>
                     <div class="input-group-append">
-                        <span class="input-group-text" style="background-color: rgb(13, 165, 23); color: white; font-size: 4em;"><a>Strongly Agree</a></span>
+                        <span class="input-group-text" style="background-color: rgb(13, 165, 23); color: white; font-size: 4em;" onclick="answer(1)"><a>Strongly Agree</a></span>
                     </div>
                 </div>
                 <div class="input-group mb-3" style="margin-top: 8%; width: 120%; margin-left: -10%">
                     <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon1" style="font-size: 2em; background-color: rgb(37, 37, 37); color: white;">Previous</button>
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon1" style="font-size: 2em; background-color: rgb(37, 37, 37); color: white;" onclick="previousQuestion()">Previous</button>
                     </div>
                     <input type="text" class="form-control" aria-describedby="button-addon1" style="visibility: hidden;">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="font-size: 2em; background-color: rgb(37, 37, 37); color: white;">Next</button>
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="font-size: 2em; background-color: rgb(37, 37, 37); color: white;" onclick="nextQuestion()">Next</button>
                     </div>
                 </div>
             </div>
