@@ -1,4 +1,5 @@
 var currentQuestion = 0;
+var questionNumber = 1;
 var weights = [];
 
 function answer(weight) {
@@ -16,12 +17,15 @@ function nextQuestion() {
         return;
     }
 
-    var questionString = questions[currentQuestion].question;
+    var questionString = questions[currentQuestion + 1].question;
 
     document.getElementById("questionText").innerHTML = questionString;
-    document.getElementById("questionNumber").innerHTML = "Question #" + (currentQuestion + 1);
+    document.getElementById("questionNumber").innerHTML = "Question #" + (questionNumber + 1);
 
     currentQuestion++;
+    questionNumber++;
+
+    console.log(currentQuestion, questionNumber);
 }
 
 function previousQuestion() {
@@ -29,10 +33,13 @@ function previousQuestion() {
         return;
     }
 
-    var questionString = questions[currentQuestion - 2].question;
+    var questionString = questions[currentQuestion - 1].question;
 
     document.getElementById("questionText").innerHTML = questionString;
-    document.getElementById("questionNumber").innerHTML = "Question #" + (currentQuestion - 1);
+    document.getElementById("questionNumber").innerHTML = "Question #" + (questionNumber - 1);
 
     currentQuestion--;
+    questionNumber--;
+    
+    console.log(currentQuestion, questionNumber);
 }
