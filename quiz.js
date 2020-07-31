@@ -13,8 +13,11 @@ function answer(weight) {
 }
 
 function nextQuestion() {
-    if (currentQuestion == 21) {
+    if (currentQuestion == 20) {
         return;
+    } else if (currentQuestion == 19) {
+        document.getElementById("nextButton").innerHTML = "Submit";
+        document.getElementById("nextButton").style.backgroundColor = "blue";
     }
 
     var questionString = questions[currentQuestion + 1].question;
