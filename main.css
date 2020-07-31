@@ -1,14 +1,48 @@
 * {
     font-family: 'Rambla', sans-serif;
+    color: white;
 }
 
 body {
+    background-color: rgb(51, 51, 51);
+}
+
+#home {
     display: flex;
+    flex-direction: column;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: -500px;
+    transition: margin 1s ease-out;
+}
+
+#quiz {
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#questionNumber {
+    text-align: center;
+    margin-top: 8%;
+    color: white;
+    font-size: 5rem;
+}
+
+#questionText {
+    text-align: center;
+    margin-top: 10%;
+    color: white;
+}
+
+span.input-group-text {
+    color: white;
+    font-size: 4em;
 }
 
 #scores {
-    height: 800px;
-    overflow: auto;
+    display: none;
+    flex-direction: column;
 }
 
 canvas {

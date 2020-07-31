@@ -1,11 +1,11 @@
 window.onload = function () {
-    // Score();
+    document.getElementById("home").style.marginTop = "70px";
 }
 
-function Score() {
+function score() {
     var scores = [0,0,0,0,0,0,0,0,0,0,0,0];
 
-    for (let i = 0; i <= 20; i++) {
+    for (let i = 0; i <= questionCount; i++) {
         for (let j = 0; j < 12; j++) {
             scores[j] += weight * scoreEffectArray[j];
         }
@@ -82,25 +82,25 @@ function Hexagon(id, s1, s2, s3) {
             scales: {
                 yAxes: [{
                     ticks: {
-                        // display: false,
+                        display: false,
                         min: -50,
                         max: 50,
                     },
-                    // gridLines: {
-                    //     display: false,
-                    //     drawBorder: false,
-                    // },
+                    gridLines: {
+                        display: false,
+                        drawBorder: false,
+                    },
                 }],
                 xAxes: [{
                     ticks: {
-                        // display: false,
+                        display: false,
                         min: -50,
                         max: 50,
                     },
-                    // gridLines: {
-                    //     drawBorder: false,
-                    //     display: false,
-                    // },
+                    gridLines: {
+                        drawBorder: false,
+                        display: false,
+                    },
                 }],
             },
         },

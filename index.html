@@ -25,12 +25,68 @@
     </head>
 
     <body>
-        <div style="display: flex; flex-direction: column;">
+        <div id="home">
+            <h1 style="text-align: center; font-size: 6em;">Experience Quadhex, a new and unique political compass</h1>
+
+            <p style="margin-top: 5%; text-align: center; font-size: 2em;">
+                Lots of filler text here, I'll add actual content later
+                <br><br>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida risus. Sed sem arcu, vestibulum a ornare ut,
+                posuere in leo. Nunc eleifend turpis in sapien ullamcorper, vitae viverra quam tincidunt. Nam vehicula placerat sem non
+                laoreet. Donec eleifend non augue a egestas. Nulla non purus posuere, volutpat nisl ut, semper dolor. Vivamus vel
+                laoreet libero, quis fermentum felis.
+            </p>
+
+            <button type="button" class="btn btn-primary btn-lg" style="font-size: 5em; margin-top: 7%; margin-left: 40%; margin-right: 40%; width: 20%;" onclick="start()">Start</button>
+        </div>
+
+        <div id="quiz">
+            <div id="question">
+                <h1 id="questionNumber">Question #1</h1>
+                <h1 id="questionText">Marriage is solely defined as the conjoinment of a man and woman.</h1>
+                <div class="input-group mb-3" style="margin-top: 12%;">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"
+                            style="background-color: rgb(255, 79, 79);"
+                            onclick="answer(-1)"><a>Strongly Disagree</a></span>
+                        <span class="input-group-text"
+                            style="background-color: rgb(255, 116, 116);"
+                            onclick="answer(-0.5)"><a>Disagree</a></span>
+                        <span class="input-group-text"
+                            style="background-color: rgb(75, 75, 75);"
+                            onclick="answer(0)"><a>Neutral</a></span>
+                        <span class="input-group-text"
+                            style="background-color: rgb(45, 211, 56);"
+                            onclick="answer(0.5)"><a>Agree</a></span>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text"
+                            style="background-color: rgb(13, 165, 23);"
+                            onclick="answer(1)"><a>Strongly Agree</a></span>
+                    </div>
+                </div>
+                <div class="input-group mb-3" style="margin-top: 8%; width: 120%; margin-left: -10%">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary" type="button" id="previousButton"
+                            style="font-size: 2em; background-color: rgb(37, 37, 37); color: white;"
+                            onclick="previousQuestion()">Previous</button>
+                    </div>
+                    <input type="text" class="form-control" style="visibility: hidden;">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="nextButton"
+                            style="font-size: 2em; background-color: rgb(37, 37, 37); color: white;"
+                            onclick="nextQuestion()">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="scores">
             <div style="display: flex; flex-direction: row;">
                 <canvas id="graph0"></canvas>
                 <canvas id="graph1"></canvas>
             </div>
-
+        
             <div style="display: flex; flex-direction: row;">
                 <canvas id="graph2"></canvas>
                 <canvas id="graph3"></canvas>

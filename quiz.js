@@ -1,6 +1,12 @@
 var currentQuestion = 0;
 var questionNumber = 1;
+var questionCount = 20;
 var weights = [];
+
+function start() {
+    document.getElementById('home').style.display = "none";
+    document.getElementById('quiz').style.display = "flex";
+}
 
 function answer(weight) {
     var questionString = questions[currentQuestion].question;
@@ -13,9 +19,17 @@ function answer(weight) {
 }
 
 function nextQuestion() {
-    if (currentQuestion == 20) {
-        return;
-    } else if (currentQuestion == 19) {
+    if (currentQuestion == questionCount) {
+        if (weights.contains(null)) {
+            return console.log(weights);
+        } else {
+            console.log(weights);
+
+            document.getElementById('quiz').style.display = "none";
+            document.getElementById('scores').style.display = "flex";
+            return score();
+        }
+    } else if (currentQuestion == questionCount - 1) {
         document.getElementById("nextButton").innerHTML = "Submit";
         document.getElementById("nextButton").style.backgroundColor = "blue";
     }
@@ -27,8 +41,6 @@ function nextQuestion() {
 
     currentQuestion++;
     questionNumber++;
-
-    console.log(currentQuestion, questionNumber);
 }
 
 function previousQuestion() {
@@ -43,6 +55,4 @@ function previousQuestion() {
 
     currentQuestion--;
     questionNumber--;
-    
-    console.log(currentQuestion, questionNumber);
 }
