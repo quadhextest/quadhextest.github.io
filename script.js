@@ -17,8 +17,11 @@ function score() {
 
         for (let j = 0; j < 12; j++) {
             scores[j] += weight * scoreEffectArray[j];
+            console.log(weight, scoreEffectArray[j], scores[j]);
         }
     }
+
+    console.log(scores);
 
     const max = [0, 300, 150, 150, -50, 0, 0, 0, 0, 0, 0, 0];
 
@@ -26,36 +29,38 @@ function score() {
         if (max[i] == 0) {
             scores[i] = 0;
         } else {
-            scores[i] = scores[i] / max[i];
+            scores[i] = 50 * scores[i] / max[i];
         }
     }
 
-    if (scores.indexOf(NaN) != -1) {
+    console.log(scores);
+
+    if (scores.indexOf(undefined) == -1 || scores.indexOf(NaN) == -1) {
         Hexagon("graph0", scores[0], scores[1], scores[2]);
         Hexagon("graph1", scores[3], scores[4], scores[5]);
         Hexagon("graph2", scores[6], scores[7], scores[8]);
         Hexagon("graph3", scores[9], scores[10], scores[11]);
     } else {
-        Hexagon("graph0");
-        Hexagon("graph1");
-        Hexagon("graph2");
-        Hexagon("graph3");
+        Hexagon("graph0", "random", "random", "random");
+        Hexagon("graph1", "random", "random", "random");
+        Hexagon("graph2", "random", "random", "random");
+        Hexagon("graph3", "random", "random", "random");
 
         console.log("Error occurred");
         console.log(scores);
-        console.log(scores.indexOf(NaN));
+        console.log(scores.indexOf(undefined));
     }
 }
 
 function Hexagon(id, s1, s2, s3) {
-    if (!s1 || !s2 || !s3) {
+    if (s1 == "random" && s2 == "random" && s3 == "random") {
         var s1 = generateScores();
         var s2 = generateScores();
         var s3 = generateScores();
     }
 
     var result = combineScores(s1, s2, s3);
-    console.log(id, result[0]);
+    console.log(id, result);
 
     var a = [{ x: -24, y: 22}];
     var b = [{ x: -0.5, y: 47}];
@@ -157,6 +162,8 @@ function combineScores(s1, s2, s3) {
     var ss2 = scaleScores(2, s2);
     var ss3 = scaleScores(3, s3);
 
+    console.log(s1, s2, s3, "|", ss1, ss2, ss3);
+
     var ax = ss1[0];
     var ay = ss1[1];
     var bx = ss2[0];
@@ -165,8 +172,22 @@ function combineScores(s1, s2, s3) {
     var cy = ss3[1];
 
     var d = 2 * (ax * (by - cy) + bx * (cy - ay) + cx * (ay - by));
-    var ux = ((ax * ax + ay * ay) * (by - cy) + (bx * bx + by * by) * (cy - ay) + (cx * cx + cy * cy) * (ay - by)) / d;
-    var uy = ((ax * ax + ay * ay) * (cx - bx) + (bx * bx + by * by) * (ax - cx) + (cx * cx + cy * cy) * (bx - ax)) / d;
+
+    if (d == 0 && ax == bx && bx == cx && ax == cx) {
+        var ux = ax;
+        var uy = (ay + by + cy)/3;
+    } else if (d == 0) {
+        console.error("Error occurred, d == 0 but ax, bx, and cx are not equal.");
+        console.log(ax, bx, cx);
+        
+        return [{
+            x: 0,
+            y: 0
+        }];
+    } else {
+        var ux = ((ax * ax + ay * ay) * (by - cy) + (bx * bx + by * by) * (cy - ay) + (cx * cx + cy * cy) * (ay - by)) / d;
+        var uy = ((ax * ax + ay * ay) * (cx - bx) + (bx * bx + by * by) * (ax - cx) + (cx * cx + cy * cy) * (bx - ax)) / d;
+    }
 
     return [{
         x: ux,

@@ -8,6 +8,15 @@ function start() {
     document.getElementById('quiz').style.display = "flex";
 }
 
+function skip() {
+    weights = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+    console.log(weights);
+
+    document.getElementById('quiz').style.display = "none";
+    document.getElementById('scores').style.display = "flex";
+    return score();
+}
+
 function answer(weight) {
     var questionString = questions[currentQuestion].question;
 
