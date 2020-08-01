@@ -1,6 +1,6 @@
 var currentQuestion = 0;
 var questionNumber = 1;
-var questionCount = 20;
+const questionCount = 20;
 var weights = [];
 
 function start() {
@@ -20,7 +20,8 @@ function answer(weight) {
 
 function nextQuestion() {
     if (currentQuestion == questionCount) {
-        if (weights.contains(null)) {
+        if (weights.indexOf(undefined) != -1) {
+            alert("You haven't answered all of the questions! Please answer all of the questions and try again.");
             return console.log(weights);
         } else {
             console.log(weights);
@@ -46,6 +47,9 @@ function nextQuestion() {
 function previousQuestion() {
     if (currentQuestion == 0) {
         return;
+    } else if (currentQuestion == questionCount) {
+        document.getElementById("nextButton").innerHTML = "Next";
+        document.getElementById("nextButton").style.backgroundColor = "rgb(37, 37, 37)";
     }
 
     var questionString = questions[currentQuestion - 1].question;

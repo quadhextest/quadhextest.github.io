@@ -6,6 +6,15 @@ function score() {
     var scores = [0,0,0,0,0,0,0,0,0,0,0,0];
 
     for (let i = 0; i <= questionCount; i++) {
+        var weight = weights[i];
+
+        var scoreEffectMap = questions[i].score_effect;
+        var scoreEffectArray = [];
+        
+        for (key in scoreEffectMap) {
+            scoreEffectArray.push(scoreEffectMap[key]);
+        }
+
         for (let j = 0; j < 12; j++) {
             scores[j] += weight * scoreEffectArray[j];
         }
