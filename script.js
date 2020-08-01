@@ -10,7 +10,7 @@ function score() {
 
         var scoreEffectMap = questions[i].score_effect;
         var scoreEffectArray = [];
-        
+
         for (key in scoreEffectMap) {
             scoreEffectArray.push(scoreEffectMap[key]);
         }
@@ -30,7 +30,7 @@ function score() {
         }
     }
 
-    if (!scores.includes(NaN)) {
+    if (scores.indexOf(NaN) != -1) {
         Hexagon("graph0", scores[0], scores[1], scores[2]);
         Hexagon("graph1", scores[3], scores[4], scores[5]);
         Hexagon("graph2", scores[6], scores[7], scores[8]);
@@ -42,6 +42,8 @@ function score() {
         Hexagon("graph3");
 
         console.log("Error occurred");
+        console.log(scores);
+        console.log(scores.indexOf(NaN));
     }
 }
 
