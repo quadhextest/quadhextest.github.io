@@ -10,7 +10,6 @@ function start() {
 
 function skip() {
     weights = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
-    console.log(weights);
 
     document.getElementById('quiz').style.display = "none";
     document.getElementById('scores').style.display = "flex";

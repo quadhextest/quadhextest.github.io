@@ -45,6 +45,47 @@ span.input-group-text {
     flex-direction: column;
 }
 
+#header {
+    font-size: 5em;
+    text-align: center;
+    padding: 2%;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 1.5%;
+    background-color: rgb(61, 61, 61);
+    border: 5px solid black;
+}
+
+#diagrams {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2%;
+}
+
+#results-title {
+    text-align: center;
+}
+
+#hexagons {
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    width: 60%;
+    margin-left: 3%;
+    background-color: rgb(61, 61, 61);
+    border: 5px solid black;
+}
+
+#axes {
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    width: 30%;
+    margin-left: 3.5%;
+    background-color: rgb(61, 61, 61);
+    border: 5px solid black;
+}
+
 canvas {
     justify-self: center;
     width: 50% !important;

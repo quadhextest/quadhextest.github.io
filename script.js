@@ -1,5 +1,7 @@
 window.onload = function () {
-    document.getElementById("home").style.marginTop = "70px";
+    if (!window.location.toString().includes("test")) {
+        document.getElementById("home").style.marginTop = "70px";
+    }
 }
 
 function score() {
@@ -67,7 +69,10 @@ function Hexagon(id, s1, s2, s3) {
     var c = [{ x: 23, y: 22.5}];
     var ax = [{ x: 23, y: -25}];
     var bx = [{ x: -0.5, y: -49}];
-    var cx = [{ x: -24, y: -25}];
+    var cx = [{ x: -24, y: -25 }];
+    
+    var pointer = new Image();
+    pointer.src = 'crosshair.png';
 
     var ctx = document.getElementById(id).getContext('2d');
 
@@ -75,10 +80,9 @@ function Hexagon(id, s1, s2, s3) {
         type: 'scatter',
         data: {
             datasets: [{
-                label: 'Scatter Dataset',
                 pointBackgroundColor: '#FF0000',
                 pointBorderColor: '#FF0000',
-                pointBorderWidth: 20,
+                pointStyle: pointer,
                 backgroundColor: 'rgb(255, 99, 132)',
                 data: result
             }]
@@ -179,7 +183,7 @@ function combineScores(s1, s2, s3) {
     } else if (d == 0) {
         console.error("Error occurred, d == 0 but ax, bx, and cx are not equal.");
         console.log(ax, bx, cx);
-        
+
         return [{
             x: 0,
             y: 0
