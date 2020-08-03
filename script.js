@@ -74,9 +74,9 @@ function Hexagon(id, s1, s2, s3) {
     var pointer = new Image();
     pointer.src = 'crosshair.png';
 
-    var ctx = document.getElementById(id).getContext('2d');
+    var graphCtx = document.getElementById(id).getContext('2d');
 
-    let hexagon = new Chart(ctx, {
+    let hexagon = new Chart(graphCtx, {
         type: 'scatter',
         data: {
             datasets: [{
@@ -85,6 +85,73 @@ function Hexagon(id, s1, s2, s3) {
                 pointStyle: pointer,
                 backgroundColor: 'rgb(255, 99, 132)',
                 data: result
+            }]
+        },
+
+        options: {
+            legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem) {
+                        return tooltipItem.xLabel.toFixed(2) + ", " + tooltipItem.yLabel.toFixed(2);
+                    }
+                }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        display: false,
+                        min: -50,
+                        max: 50,
+                    },
+                    gridLines: {
+                        display: false,
+                        drawBorder: false,
+                    },
+                }],
+                xAxes: [{
+                    ticks: {
+                        display: false,
+                        min: -50,
+                        max: 50,
+                    },
+                    gridLines: {
+                        drawBorder: false,
+                        display: false,
+                    },
+                }],
+            },
+        },
+    });
+
+    var cursor = new Image();
+    cursor.src = 'cursor.png';
+
+    function resizeCursor() {
+        cursor.width = document.getElementById("axis0").clientWidth * 0.15;
+        cursor.height = document.getElementById("axis0").clientHeight * 1.3;
+    };
+    
+    window.addEventListener("resize", resizeCursor);
+    resizeCursor();
+
+    var axisCtx = document.getElementById("axis0").getContext('2d');
+
+    let axis = new Chart(axisCtx, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                pointBackgroundColor: '#FF0000',
+                pointBorderColor: '#FF0000',
+                pointStyle: cursor,
+                pointRotation: 0,
+                backgroundColor: 'rgb(255, 99, 132)',
+                data: [{
+                    x: 20,
+                    y: -8
+                }]
             }]
         },
 

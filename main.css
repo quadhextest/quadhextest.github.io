@@ -86,12 +86,22 @@ span.input-group-text {
     border: 5px solid black;
 }
 
-canvas {
+canvas.graph {
     justify-self: center;
     width: 50% !important;
     height: 100% !important;
     background-image: url("hexagon.png");
     background-size: 50% 100%;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+canvas.axis {
+    justify-self: center;
+    width: 100% !important;
+    height: 25% !important;
+    background-image: url("axis0.png");
+    background-size: 100% 100%;
     background-position-x: center;
     background-repeat: no-repeat;
 }
