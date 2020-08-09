@@ -92,11 +92,7 @@ function Hexagon(id, s1, s2, s3) {
                 display: false
             },
             tooltips: {
-                callbacks: {
-                    label: function (tooltipItem) {
-                        return tooltipItem.xLabel.toFixed(2) + ", " + tooltipItem.yLabel.toFixed(2);
-                    }
-                }
+                enabled: false
             },
             scales: {
                 yAxes: [{
@@ -179,11 +175,7 @@ function Axis(scores) {
                     fontColor: "#909090",
                 },
                 tooltips: {
-                    callbacks: {
-                        label: function (tooltipItem) {
-                            return tooltipItem.xLabel.toFixed(2) + ", " + tooltipItem.yLabel.toFixed(2);
-                        }
-                    }
+                    enabled: false
                 },
                 scales: {
                     yAxes: [{
@@ -191,6 +183,7 @@ function Axis(scores) {
                             display: false,
                             min: -50,
                             max: 50,
+                            fontSize: 400
                         },
                         gridLines: {
                             display: false,
