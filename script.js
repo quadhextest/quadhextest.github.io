@@ -19,13 +19,13 @@ function score() {
 
         for (let j = 0; j < 12; j++) {
             scores[j] += weight * scoreEffectArray[j];
-            console.log(weight, scoreEffectArray[j], scores[j]);
         }
     }
 
-    console.log(scores);
+    console.log(scores)
 
-    const max = [0, 300, 150, 150, -50, 0, 0, 0, 0, 0, 0, 0];
+    // const max = [0, 300, 150, 150, -50, 0, 0, 0, 0, 0, 0, 0];
+    const max = [0, 300, 150, 250, 50, 0, 0, 0, 0, 0, 0, 0];
 
     for (let i = 0; i < 12; i++) {
         if (max[i] == 0) {
@@ -35,34 +35,33 @@ function score() {
         }
     }
 
-    console.log(scores);
-
     if (scores.indexOf(undefined) == -1 || scores.indexOf(NaN) == -1) {
         Hexagon("graph0", scores[0], scores[1], scores[2]);
         Hexagon("graph1", scores[3], scores[4], scores[5]);
         Hexagon("graph2", scores[6], scores[7], scores[8]);
         Hexagon("graph3", scores[9], scores[10], scores[11]);
-    } else {
-        Hexagon("graph0", "random", "random", "random");
-        Hexagon("graph1", "random", "random", "random");
-        Hexagon("graph2", "random", "random", "random");
-        Hexagon("graph3", "random", "random", "random");
 
-        console.log("Error occurred");
+        Axis(scores);
+    } else {
+        for (let i = 0; i < 4; i++) {
+            let s1 = generateScores();
+            let s2 = generateScores();
+            let s3 = generateScores();
+            scores.push(s1, s2, s3);
+
+            Hexagon("graph" + i, s1, s2, s3);
+        }
+
+        Axis(scores);
+
+        console.error("Error occurred");
         console.log(scores);
         console.log(scores.indexOf(undefined));
     }
 }
 
 function Hexagon(id, s1, s2, s3) {
-    if (s1 == "random" && s2 == "random" && s3 == "random") {
-        var s1 = generateScores();
-        var s2 = generateScores();
-        var s3 = generateScores();
-    }
-
     var result = combineScores(s1, s2, s3);
-    console.log(id, result);
 
     var a = [{ x: -24, y: 22}];
     var b = [{ x: -0.5, y: 47}];
@@ -125,74 +124,95 @@ function Hexagon(id, s1, s2, s3) {
             },
         },
     });
+};
+
+function Axis(scores) {
+    console.log(scores);
 
     var cursor = new Image();
     cursor.src = 'cursor.png';
 
-    function resizeCursor() {
-        cursor.width = document.getElementById("axis0").clientWidth * 0.15;
-        cursor.height = document.getElementById("axis0").clientHeight * 1.3;
+    function resize() {
+        cursor.width = document.getElementById("axis0").clientWidth * 0.3;
+        cursor.height = document.getElementById("axis0").clientHeight * 1.6;
     };
-    
-    window.addEventListener("resize", resizeCursor);
-    resizeCursor();
 
-    var axisCtx = document.getElementById("axis0").getContext('2d');
+    window.addEventListener("resize", resize);
+    resize();
 
-    let axis = new Chart(axisCtx, {
-        type: 'scatter',
-        data: {
-            datasets: [{
-                pointBackgroundColor: '#FF0000',
-                pointBorderColor: '#FF0000',
-                pointStyle: cursor,
-                pointRotation: 0,
-                backgroundColor: 'rgb(255, 99, 132)',
-                data: [{
-                    x: 20,
-                    y: -8
+    for (let i = 0; i < 12; i++) {
+        let p = scores[i] / 50;
+        let x = p * 25;
+        console.log(x);
+
+        var axisCtx = document.getElementById("axis" + i).getContext('2d');
+
+        window.addEventListener("resize", function () {
+            axis.options.title.fontSize = document.getElementById("axis" + i).width / 10;
+        });
+
+        let axis = new Chart(axisCtx, {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    pointBackgroundColor: '#FF0000',
+                    pointBorderColor: '#FF0000',
+                    pointStyle: cursor,
+                    pointRotation: 0,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    data: [{
+                        x: x,
+                        y: 16
+                    }]
                 }]
-            }]
-        },
+            },
 
-        options: {
-            legend: {
-                display: false
-            },
-            tooltips: {
-                callbacks: {
-                    label: function (tooltipItem) {
-                        return tooltipItem.xLabel.toFixed(2) + ", " + tooltipItem.yLabel.toFixed(2);
+            options: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: axes[i] + ": " + (p * 100).toFixed(0) + "%",
+                    fontFamily: "'Rambla', 'sans-serif'",
+                    fontSize: document.getElementById("axis" + i).width / 2,
+                    fontColor: "#909090",
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function (tooltipItem) {
+                            return tooltipItem.xLabel.toFixed(2) + ", " + tooltipItem.yLabel.toFixed(2);
+                        }
                     }
-                }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            display: false,
+                            min: -50,
+                            max: 50,
+                        },
+                        gridLines: {
+                            display: false,
+                            drawBorder: false,
+                        },
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            display: false,
+                            min: -50,
+                            max: 50,
+                        },
+                        gridLines: {
+                            drawBorder: false,
+                            display: false,
+                        },
+                    }],
+                },
             },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        display: false,
-                        min: -50,
-                        max: 50,
-                    },
-                    gridLines: {
-                        display: false,
-                        drawBorder: false,
-                    },
-                }],
-                xAxes: [{
-                    ticks: {
-                        display: false,
-                        min: -50,
-                        max: 50,
-                    },
-                    gridLines: {
-                        drawBorder: false,
-                        display: false,
-                    },
-                }],
-            },
-        },
-    });
-};
+        });
+    }
+}
 
 function generateScores() {
     var scores = [];

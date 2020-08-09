@@ -1,4 +1,6 @@
-var questions = [
+const axes = ["Religious", "Tradition", "Respect", "Control", "Authority", "Federation", "Equality", "Hardship", "Charity", "War", "Seclusion", "Isolation"];
+
+const questions = [
     {
         "question": "Marriage is solely defined as the conjoinment of a man and woman.",
         "score_effect": {

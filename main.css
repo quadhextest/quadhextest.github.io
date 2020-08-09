@@ -48,9 +48,9 @@ span.input-group-text {
 #header {
     font-size: 5em;
     text-align: center;
-    padding: 2%;
-    width: 80%;
-    margin-left: 10%;
+    padding: 1.5%;
+    width: 70%;
+    margin-left: 15%;
     margin-top: 1.5%;
     background-color: rgb(61, 61, 61);
     border: 5px solid black;
@@ -58,8 +58,8 @@ span.input-group-text {
 
 #diagrams {
     display: flex;
-    flex-direction: row;
-    margin-top: 2%;
+    flex-direction: column;
+    margin-top: 1%;
 }
 
 #results-title {
@@ -71,7 +71,7 @@ span.input-group-text {
     flex-direction: column;
     padding: 1%;
     width: 60%;
-    margin-left: 3%;
+    margin-left: 20%;
     background-color: rgb(61, 61, 61);
     border: 5px solid black;
 }
@@ -80,8 +80,9 @@ span.input-group-text {
     display: flex;
     flex-direction: column;
     padding: 1%;
-    width: 30%;
-    margin-left: 3.5%;
+    width: 90%;
+    margin-top: 1%;
+    margin-left: 5%;
     background-color: rgb(61, 61, 61);
     border: 5px solid black;
 }
@@ -90,6 +91,7 @@ canvas.graph {
     justify-self: center;
     width: 50% !important;
     height: 100% !important;
+    margin: 1%;
     background-image: url("hexagon.png");
     background-size: 50% 100%;
     background-position-x: center;
@@ -98,14 +100,33 @@ canvas.graph {
 
 canvas.axis {
     justify-self: center;
-    width: 100% !important;
+    width: 23.4% !important;
     height: 25% !important;
-    background-image: url("axis0.png");
+    margin-left: 0.8%;
+    margin-right: 0.8%;
+    margin-top: 0.75%;
+    margin-bottom: 0.75%;
+    background-image: url("axis.png");
     background-size: 100% 100%;
     background-position-x: center;
     background-repeat: no-repeat;
+    border: 1px solid gray;
 }
 
 a {
     cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #343434;
+  box-shadow: inset 0 0 2px #343434;
+}
+::-webkit-scrollbar-thumb {
+  background: #30b0f5;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0094e4;
 }
